@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 import { MongoConnection } from './database/connection';
 
 dotenv.config();
-if (!process.env.PORT || !process.env.MONGO_URI) {
+if (!process.env.PORT) {
     console.log(`Error to get env vars`);
     process.exit(1);
 }
