@@ -1,14 +1,13 @@
-import {
+import mongoose, {
   Schema
-} from 'mongoose';
-import mongoose from 'mongoose';
+} from 'mongoose'
 
-export const Posts = new Schema({
+export const PostModel = new Schema({
   id: { type: mongoose.Schema.Types.ObjectId, required: false },
-  title: { type: String, required: true, notNull: true},
-  body: { type: String, required: true, notNull: true},
-  tags: { type: Array, required: true, notNull: true},
-});
+  title: { type: String, required: true, notNull: true },
+  body: { type: String, required: true, notNull: true },
+  tags: { type: Array, required: true, notNull: true }
+})
 
-const posts = mongoose.model("posts", Posts);
-export default posts;
+const Post = mongoose.model('posts', PostModel)
+export default Post

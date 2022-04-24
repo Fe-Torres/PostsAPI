@@ -1,13 +1,13 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 export class MongoConnection {
-  constructor(mongoUri: string) {
+  constructor (mongoUri: string) {
     mongoose.connect(mongoUri, (err: any) => {
       if (err) {
-        console.log("error connecting to database", err.message);
+        console.log('error connecting to database', err.message)
       } else {
-        console.log(`Connecting to MONGO`);
+        console.log('Connecting to MONGO')
       }
-    });
+    })
   }
 }
