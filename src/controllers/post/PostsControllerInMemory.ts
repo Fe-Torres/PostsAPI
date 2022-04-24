@@ -40,9 +40,9 @@ export class PostControllerInMemory {
             let index = postsInMemory.findIndex(d => d.id === postId);
             if (index < 0) return res.status(404).json({ message: "Post not found", status_code: 404 })
 
-            postsInMemory[index]["title"] = updatePost["title"]
-            postsInMemory[index]["body"] = updatePost["body"]
-            postsInMemory[index]["tags"] = updatePost["tags"]
+            postsInMemory[index].title = updatePost.title;
+            postsInMemory[index].body = updatePost.body;
+            postsInMemory[index].tags = updatePost.tags;
             return res.json(postsInMemory[index]);
         } catch (error) {
             return res.status(400).json({ message: error.message, status_code: 400 });

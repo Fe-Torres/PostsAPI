@@ -1,5 +1,5 @@
 import express from 'express';
-import { router } from './posts';
+import { router } from './routes';
 
 export class App {
   public server: express.Application;
