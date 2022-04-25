@@ -36,6 +36,7 @@ $ npm run start
 
 **Observações:**
   1. As rotas estão protegidas por uma autenticação JWT, logo para acessar os recursos da aplicação, você precisará se autenticar em  "/auth" passando o email(teste@email.com) e senha(teste1962) do usuário estático.
+  2. Caso queira testar no insominia, deixei o arquivo das collections no projeto (nome do arquivo: Insomnia_2022-04-25).
 
 ### _Testes_
 
