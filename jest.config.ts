@@ -3,6 +3,7 @@ export default {
   coverageProvider: 'v8',
   preset: 'ts-jest',
   testMatch: [
+    '**/test/**/**/*.spec.ts',
     '**/test/**/*.spec.ts'
   ]
 }

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { IPosts } from '../../helpers/utils'
-import Post from '../../models/post'
+import Post from '../../models/Post'
 
 export class PostController {
   async createPost (req: Request, res: Response): Promise<unknown> {

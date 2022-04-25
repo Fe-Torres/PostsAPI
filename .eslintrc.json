@@ -16,5 +16,5 @@
     ],
     "rules": {
     },
-    "ignorePatterns": ["test/**/*.spec.ts","node_modules"]
+    "ignorePatterns": ["node_modules"]
 }

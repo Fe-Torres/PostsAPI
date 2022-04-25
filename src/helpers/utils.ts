@@ -1,3 +1,4 @@
+
 export interface IPosts {
     id: string;
     title: string;
@@ -5,6 +6,12 @@ export interface IPosts {
     tags?: Array<string>;
 }
 
+export function validPostData (Post:IPosts): boolean {
+  if (!Post.title || !Post.body) {
+    return false
+  }
+  return true
+}
 export const postsInMemory: IPosts[] = [
   {
     id: '92bj0nko',

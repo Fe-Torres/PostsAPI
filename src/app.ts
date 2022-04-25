@@ -1,9 +1,8 @@
 /* eslint-disable no-new */
 import { App } from './routes/api'
-import * as dotenv from 'dotenv'
+import 'dotenv/config'
 import { MongoConnection } from './database/connection'
 
-dotenv.config()
 if (!process.env.PORT) {
   console.log('Error to get env vars')
   process.exit(1)
