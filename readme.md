@@ -39,7 +39,6 @@ $ npm run start
 
 ### _Testes_
 
-- Testes unitários:
 
 ```
 $ yarn test
