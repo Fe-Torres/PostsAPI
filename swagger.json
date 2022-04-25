@@ -1,0 +1,376 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de manipulação de postagens",
+        "descriptions": "Essa api tem como objetivo fazer o CRUD de postagens",
+        "contact": {
+            "email": "felipeost.torres@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333/api",
+            "description": "Api com banco de dados"
+        },
+        {
+            "url": "http://localhost:3333/dev",
+            "description": "Api com dados na memória"
+        }
+    ],
+    "paths": {
+        "/posts": {
+            "post": {
+                "summary": "Cadastro de postagem",
+                "description": "Essa rota será responsável por cadastrar uma nova postagem.",
+                "tags": [
+                    "Post"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Post"
+                            },
+                            "examples": {
+                                "post": {
+                                    "value": {
+                                        "title": "New Post!",
+                                        "body": "Any body of post",
+                                        "tags": [
+                                            "item1",
+                                            "item2"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Token is missing"
+                    },
+                    "500": {
+                        "description": "Internal error"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Irá listar todas as postagens",
+                "description": "Essa rota será responsável por listar todas as postagens.",
+                "tags": [
+                    "Post"
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Token is missing"
+                    },
+                    "500": {
+                        "description": "Internal error"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Post"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/posts/{id}": {
+            "get": {
+                "summary": "Irá buscar uma postagem pelo ID",
+                "description": "Essa rota será responsável por buscar uma postagem pelo.",
+                "tags": [
+                    "Post"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID do post para busca",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Post not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error"
+                    },
+                    "401": {
+                        "description": "Token is missing"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Irá atualizar uma postagem pelo ID",
+                "description": "Essa rota será responsável por atualizar uma postagem pelo.",
+                "tags": [
+                    "Post"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Post"
+                            },
+                            "examples": {
+                                "post": {
+                                    "value": {
+                                        "title": "New Post updated!",
+                                        "body": "Any body of post updated",
+                                        "tags": [
+                                            "item5",
+                                            "item6"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID do post para atualização",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Post not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error"
+                    },
+                    "401": {
+                        "description": "Token is missing"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Irá excluir uma postagem pelo ID",
+                "description": "Essa rota será responsável por excluir uma postagem pelo ID.",
+                "tags": [
+                    "Post"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID do post para exclusão",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Post not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error"
+                    },
+                    "401": {
+                        "description": "Token is missing"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth": {
+            "post": {
+                "summary": "Autenticação de usuário",
+                "description": "Essa rota será responsável por autenticar um usuário e gerar o token de acesso.",
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthUser"
+                            },
+                            "examples": {
+                                "post": {
+                                    "value": {
+                                        "email": "teste@email.com",
+                                        "password": "teste1962"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "User not found"
+                    },
+                    "500": {
+                        "description": "Internal error"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Post": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "body": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "Token": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AuthUser": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

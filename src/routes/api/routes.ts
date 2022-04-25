@@ -11,13 +11,13 @@ router.get('/api/posts', AuthMiddleware, postController.listingPosts)
 router.get('/api/posts/:id', AuthMiddleware, postController.getPostByID)
 router.put('/api/posts/:id', AuthMiddleware, postController.editPost)
 router.delete('/api/posts/:id', AuthMiddleware, postController.deletePost)
+router.post('/api/auth', authController.authenticate)
 
 router.post('/dev/posts', AuthMiddleware, postControllerInMemory.createPost)
 router.get('/dev/posts', AuthMiddleware, postControllerInMemory.listingPosts)
 router.get('/dev/posts/:id', AuthMiddleware, postControllerInMemory.getPostByID)
 router.put('/dev/posts/:id', AuthMiddleware, postControllerInMemory.editPost)
 router.delete('/dev/posts/:id', AuthMiddleware, postControllerInMemory.deletePost)
-
-router.post('/api/auth', authController.authenticate)
+router.post('/dev/auth', authController.authenticate)
 
 export { router }

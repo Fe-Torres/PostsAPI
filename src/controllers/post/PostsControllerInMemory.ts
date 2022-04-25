@@ -12,7 +12,7 @@ export class PostControllerInMemory {
       postsInMemory.push(newPost)
       return res.status(200).json(newPost)
     } catch (error) {
-      return res.status(400).json({ message: error.message, status_code: 400 })
+      return res.status(500).json({ message: error.message, status_code: 500 })
     }
   }
 
@@ -20,7 +20,7 @@ export class PostControllerInMemory {
     try {
       return res.status(200).json(postsInMemory)
     } catch (error) {
-      return res.status(400).json({ message: error.message, status_code: 500 })
+      return res.status(500).json({ message: error.message, status_code: 500 })
     }
   }
 
@@ -32,7 +32,7 @@ export class PostControllerInMemory {
       const result = postsInMemory[index]
       return res.send(result)
     } catch (error) {
-      return res.status(400).json({ message: error.message, status_code: 500 })
+      return res.status(500).json({ message: error.message, status_code: 500 })
     }
   }
 
@@ -51,7 +51,7 @@ export class PostControllerInMemory {
       postsInMemory[index].tags = updatePost.tags
       return res.json(postsInMemory[index])
     } catch (error) {
-      return res.status(400).json({ message: error.message, status_code: 500 })
+      return res.status(500).json({ message: error.message, status_code: 500 })
     }
   }
 
@@ -63,7 +63,7 @@ export class PostControllerInMemory {
       postsInMemory.splice(index, 1)
       return res.json({ message: 'Post successfully deleted', status_code: 200 })
     } catch (error) {
-      return res.status(400).json({ message: error.message, status_code: 500 })
+      return res.status(500).json({ message: error.message, status_code: 500 })
     }
   }
 }

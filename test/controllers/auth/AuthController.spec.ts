@@ -4,7 +4,7 @@ import { app } from '../../mocks/api/app'
 
 describe('authenticating user', () => {
   it('should be able authenticate user', async () => {
-    const response = await request(app).post('/api/auth').send({
+    const response = await request(app).post('/dev/auth').send({
       email: 'teste@email.com',
       password: 'teste1962'
     })
@@ -13,7 +13,7 @@ describe('authenticating user', () => {
   })
 
   it('should not be able to authenticate a non-existing user', async () => {
-    const response = await request(app).post('/api/auth').send({
+    const response = await request(app).post('/dev/auth').send({
       email: 'email@email.com',
       password: 'password'
     })
@@ -22,7 +22,7 @@ describe('authenticating user', () => {
   })
 
   it('should not be able to authenticate a user with the wrong password', async () => {
-    const response = await request(app).post('/api/auth').send({
+    const response = await request(app).post('/dev/auth').send({
       email: 'teste@email.com',
       password: 'peter2022'
     })

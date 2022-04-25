@@ -8,7 +8,7 @@ describe('PostController using data in memory', () => {
   let token:string
 
   beforeAll(async () => {
-    const response = await request(app).post('/api/auth').send({
+    const response = await request(app).post('/dev/auth').send({
       email: 'teste@email.com',
       password: 'teste1962'
     })
